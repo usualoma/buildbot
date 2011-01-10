@@ -77,6 +77,8 @@ class GitPoller(base.PollingChangeSource):
                                        'origin/%s' % self.branch],
                         cwd=self.workdir)
             else:
+                subprocess.check_call([self.gitbin, 'fetch', 'origin', self.branch],
+                        cwd=self.workdir)
                 subprocess.check_call([self.gitbin, 'checkout', '-b', self.branch,
                                        'origin/%s' % self.branch],
                         cwd=self.workdir)
