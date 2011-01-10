@@ -109,7 +109,7 @@ class GitPoller(base.PollingChangeSource):
         stripped_output = git_output.strip()
         if len(stripped_output) == 0:
             raise EnvironmentError('could not get commit comment for rev')
-        self.commitInfo['comments'] = stripped_output
+        self.commitInfo['comments'] = stripped_output.decode('utf_8')
         return self.commitInfo['comments'] # for tests
 
     def _get_commit_timestamp(self, rev):
